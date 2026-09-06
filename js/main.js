@@ -1,35 +1,6 @@
-// ===== SMOOTH SCROLL — interpolação suave sem exagero =====
-// Intercepta o wheel e move para a posição alvo com easing
-(function () {
-  let targetY = window.scrollY;
-  let rafId   = null;
-
-  function ease(current, target) {
-    return current + (target - current) * 0.1;
-  }
-
-  function tick() {
-    const current = window.scrollY;
-    const next    = ease(current, targetY);
-    window.scrollTo(0, next);
-
-    if (Math.abs(next - targetY) > 0.5) {
-      rafId = requestAnimationFrame(tick);
-    } else {
-      window.scrollTo(0, targetY);
-      rafId = null;
-    }
-  }
-
-  window.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    const delta = e.deltaMode === 1 ? e.deltaY * 96 : e.deltaY * 3;
-    const max   = document.documentElement.scrollHeight - window.innerHeight;
-    targetY     = Math.max(0, Math.min(targetY + delta, max));
-
-    if (!rafId) rafId = requestAnimationFrame(tick);
-  }, { passive: false });
-})();
+// ===== SMOOTH SCROLL — CSS nativo, velocidade padrão =====
+// Não intercepta o wheel — deixa o browser controlar a velocidade
+// O easing é feito apenas para links internos e scroll-to-top
 
 // ===== SMOOTH SCROLL — para links internos e scroll-to-top =====
 function smoothScrollTo(destY, duration) {

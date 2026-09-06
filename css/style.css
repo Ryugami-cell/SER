@@ -40,6 +40,9 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  /* Aceleração de scroll nativa no Chrome/Edge/Safari */
+  -webkit-overflow-scrolling: touch;
+  scroll-timeline: --page-scroll block;
 }
 
 a { text-decoration: none; color: inherit; }
