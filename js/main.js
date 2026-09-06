@@ -1,30 +1,19 @@
-// ===== MOMENTUM SCROLL — roda do mouse com inércia/aceleração =====
-// Captura o wheel event e aplica física de velocidade + fricção
+// ===== SMOOTH SCROLL — interpolação suave sem exagero =====
+// Intercepta o wheel e move para a posição alvo com easing
 (function () {
-  let velocity    = 0;
-  let targetY     = window.scrollY;
-  let rafId       = null;
-  const FRICTION   = 0.86;   // decaimento por frame (menor = para mais rápido)
-  const MULTIPLIER = 3.2;    // sensibilidade da roda
+  let targetY = window.scrollY;
+  let rafId   = null;
 
-  function lerp(a, b, t) { return a + (b - a) * t; }
-
-  function clamp(val, min, max) { return Math.max(min, Math.min(max, val)); }
-
-  function getMaxScroll() {
-    return document.documentElement.scrollHeight - window.innerHeight;
+  function ease(current, target) {
+    return current + (target - current) * 0.1;
   }
 
   function tick() {
-    velocity *= FRICTION;
-    targetY  += velocity;
-    targetY   = clamp(targetY, 0, getMaxScroll());
-
     const current = window.scrollY;
-    const next    = lerp(current, targetY, 0.12);
+    const next    = ease(current, targetY);
     window.scrollTo(0, next);
 
-    if (Math.abs(velocity) > 0.4 || Math.abs(next - targetY) > 0.8) {
+    if (Math.abs(next - targetY) > 0.5) {
       rafId = requestAnimationFrame(tick);
     } else {
       window.scrollTo(0, targetY);
@@ -34,10 +23,9 @@
 
   window.addEventListener('wheel', (e) => {
     e.preventDefault();
-    // Normaliza delta para trackpad e mouse
-    const delta = e.deltaMode === 1 ? e.deltaY * 24 : e.deltaY;
-    velocity   += delta * MULTIPLIER;
-    targetY     = clamp(window.scrollY + velocity, 0, getMaxScroll());
+    const delta = e.deltaMode === 1 ? e.deltaY * 32 : e.deltaY;
+    const max   = document.documentElement.scrollHeight - window.innerHeight;
+    targetY     = Math.max(0, Math.min(targetY + delta, max));
 
     if (!rafId) rafId = requestAnimationFrame(tick);
   }, { passive: false });
