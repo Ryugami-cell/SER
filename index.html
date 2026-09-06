@@ -3,158 +3,359 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SER Petshop</title>
+  <title>SER Petshop — Cuidando com amor</title>
+  <meta name="description" content="SER Petshop — Banho, tosa, consultas veterinárias e produtos para cães e gatos. Tudo que o seu melhor amigo merece." />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- ===== NAVBAR ===== -->
   <header>
     <nav class="navbar">
-      <div class="logo">
-        <i class="fas fa-paw"></i> SER Petshop
-      </div>
-      <ul class="nav-links">
+
+      <!-- LOGO: chapéu de barão SVG -->
+      <a href="#home" class="logo">
+        <div class="logo-icon">
+          <!-- Chapéu de Barão (Top Hat) SVG -->
+          <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Aba do chapéu -->
+            <ellipse cx="50" cy="68" rx="44" ry="10" fill="white"/>
+            <!-- Corpo do chapéu -->
+            <rect x="22" y="16" width="56" height="50" rx="4" fill="white"/>
+            <!-- Topo do chapéu (arredondado) -->
+            <ellipse cx="50" cy="16" rx="28" ry="8" fill="white"/>
+            <!-- Faixa decorativa -->
+            <rect x="22" y="52" width="56" height="8" rx="2" fill="rgba(45,106,79,0.35)"/>
+          </svg>
+        </div>
+        SER Petshop
+      </a>
+
+      <ul class="nav-links" id="nav-links">
         <li><a href="#home">Início</a></li>
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#produtos">Produtos</a></li>
         <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#contato">Contato</a></li>
+        <li><a href="#contato" class="nav-cta">Fale conosco</a></li>
       </ul>
-      <div class="hamburger" id="hamburger">
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
         <i class="fas fa-bars"></i>
-      </div>
+      </button>
     </nav>
   </header>
 
-  <!-- HERO -->
+  <!-- ===== HERO ===== -->
   <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>Cuidando do seu pet <span>com amor</span></h1>
-      <p>Banho, tosa, consultas e produtos para cães e gatos. Tudo que o seu melhor amigo merece.</p>
-      <a href="#servicos" class="btn-primary">Conheça nossos serviços</a>
-    </div>
-    <div class="hero-image">
-      <img src="images/hero-pet.png" alt="Pet feliz" onerror="this.style.display='none'" />
+    <div class="hero-container">
+
+      <div class="hero-content">
+        <span class="hero-badge">
+          <i class="fas fa-paw"></i> Bem-vindo ao SER Petshop
+        </span>
+        <h1>
+          Cuidando do seu pet<br/>
+          com <em>amor & estilo</em>
+        </h1>
+        <p>
+          Banho, tosa, consultas veterinárias e produtos selecionados para cães e gatos. Um lugar seguro e acolhedor para o seu melhor amigo.
+        </p>
+        <div class="hero-btns">
+          <a href="#servicos" class="btn-primary">
+            <i class="fas fa-paw"></i> Nossos serviços
+          </a>
+          <a href="#contato" class="btn-outline">
+            <i class="fas fa-calendar-check"></i> Agendar visita
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-icon">🐾</div>
+          <h3>Seu pet merece o melhor</h3>
+          <p>Profissionais certificados, ambiente seguro e muito carinho em cada atendimento.</p>
+          <div class="hero-card-stats">
+            <div class="hero-stat">
+              <span>500+</span>
+              <span>Pets atendidos</span>
+            </div>
+            <div class="hero-stat">
+              <span>5★</span>
+              <span>Avaliação</span>
+            </div>
+            <div class="hero-stat">
+              <span>5 anos</span>
+              <span>Experiência</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- SERVIÇOS -->
+  <!-- ===== SERVIÇOS ===== -->
   <section class="section" id="servicos">
-    <h2 class="section-title">Nossos Serviços</h2>
-    <div class="cards-grid">
-      <div class="card">
-        <i class="fas fa-shower"></i>
-        <h3>Banho & Tosa</h3>
-        <p>Deixamos seu pet limpo, cheiroso e confortável com produtos de alta qualidade.</p>
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-eyebrow">O que oferecemos</span>
+        <h2 class="section-title">Serviços feitos com <span>dedicação</span></h2>
+        <p class="section-sub">Cada pet é único. Por isso, cada atendimento é personalizado com todo o cuidado que ele merece.</p>
       </div>
-      <div class="card">
-        <i class="fas fa-stethoscope"></i>
-        <h3>Consulta Veterinária</h3>
-        <p>Equipe veterinária especializada para cuidar da saúde do seu animal.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-bone"></i>
-        <h3>Hotel para Pets</h3>
-        <p>Hospedagem segura e confortável enquanto você viaja.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-scissors"></i>
-        <h3>Estética Animal</h3>
-        <p>Cortes e cuidados estéticos personalizados para cada raça.</p>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">🛁</div>
+          <h3>Banho & Tosa</h3>
+          <p>Deixamos seu pet limpo, cheiroso e confortável com produtos dermatologicamente testados.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🩺</div>
+          <h3>Consulta Veterinária</h3>
+          <p>Equipe veterinária especializada para cuidar da saúde e bem-estar do seu animal.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏡</div>
+          <h3>Hotel para Pets</h3>
+          <p>Hospedagem segura, acolhedora e supervisionada enquanto você viaja tranquilo.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">✂️</div>
+          <h3>Estética Animal</h3>
+          <p>Cortes personalizados, hidratação e cuidados estéticos para cada raça e pelagem.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💉</div>
+          <h3>Vacinação</h3>
+          <p>Calendário vacinal completo com acompanhamento e lembretes para o seu pet.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🦷</div>
+          <h3>Higiene Dental</h3>
+          <p>Limpeza dental profissional para prevenir doenças e garantir um hálito saudável.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PRODUTOS -->
+  <!-- ===== PRODUTOS ===== -->
   <section class="section section-alt" id="produtos">
-    <h2 class="section-title">Produtos em Destaque</h2>
-    <div class="products-grid">
-      <div class="product-card">
-        <div class="product-img"><i class="fas fa-drumstick-bite"></i></div>
-        <h3>Ração Premium</h3>
-        <p>Para cães e gatos de todas as idades.</p>
-        <span class="price">A partir de R$ 49,90</span>
-        <a href="#contato" class="btn-secondary">Comprar</a>
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-eyebrow">Loja</span>
+        <h2 class="section-title">Produtos em <span>destaque</span></h2>
+        <p class="section-sub">Selecionamos os melhores produtos para nutrição, conforto e saúde do seu pet.</p>
       </div>
-      <div class="product-card">
-        <div class="product-img"><i class="fas fa-tshirt"></i></div>
-        <h3>Roupinhas & Acessórios</h3>
-        <p>Estilo e conforto para o seu pet.</p>
-        <span class="price">A partir de R$ 29,90</span>
-        <a href="#contato" class="btn-secondary">Comprar</a>
-      </div>
-      <div class="product-card">
-        <div class="product-img"><i class="fas fa-medkit"></i></div>
-        <h3>Medicamentos</h3>
-        <p>Vermífugos, antipulgas e vitaminas.</p>
-        <span class="price">A partir de R$ 19,90</span>
-        <a href="#contato" class="btn-secondary">Comprar</a>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-thumb">🥩</div>
+          <div class="product-body">
+            <h3>Ração Premium</h3>
+            <p>Formulada por veterinários nutricionistas para cães e gatos de todas as idades.</p>
+            <span class="price">A partir de R$ 49,90</span>
+            <a href="#contato" class="btn-secondary">Ver opções</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-thumb">🎀</div>
+          <div class="product-body">
+            <h3>Roupinhas & Acessórios</h3>
+            <p>Estilo, conforto e proteção para o seu pet em qualquer ocasião.</p>
+            <span class="price">A partir de R$ 29,90</span>
+            <a href="#contato" class="btn-secondary">Ver opções</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-thumb">💊</div>
+          <div class="product-body">
+            <h3>Medicamentos & Vitaminas</h3>
+            <p>Vermífugos, antipulgas, vitaminas e suplementos com orientação veterinária.</p>
+            <span class="price">A partir de R$ 19,90</span>
+            <a href="#contato" class="btn-secondary">Ver opções</a>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-thumb">🛏️</div>
+          <div class="product-body">
+            <h3>Caminhas & Casinhas</h3>
+            <p>Conforto e aconchego para o seu pet descansar com segurança.</p>
+            <span class="price">A partir de R$ 89,90</span>
+            <a href="#contato" class="btn-secondary">Ver opções</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SOBRE -->
+  <!-- ===== SOBRE ===== -->
   <section class="section" id="sobre">
-    <div class="sobre-container">
-      <div class="sobre-text">
-        <h2>Sobre o SER Petshop</h2>
-        <p>Somos apaixonados por animais e acreditamos que cada pet merece o melhor cuidado possível. Fundado com o propósito de oferecer serviços de qualidade, o SER Petshop é o lugar onde o bem-estar do seu animal é nossa prioridade.</p>
-        <ul class="sobre-lista">
-          <li><i class="fas fa-check-circle"></i> Mais de 5 anos de experiência</li>
-          <li><i class="fas fa-check-circle"></i> Profissionais certificados</li>
-          <li><i class="fas fa-check-circle"></i> Ambiente seguro e acolhedor</li>
-          <li><i class="fas fa-check-circle"></i> Atendimento personalizado</li>
-        </ul>
-      </div>
-      <div class="sobre-stats">
-        <div class="stat">
-          <span class="stat-num">500+</span>
-          <span class="stat-label">Pets atendidos</span>
+    <div class="section-inner">
+      <div class="sobre-grid">
+        <div class="sobre-text">
+          <span class="section-eyebrow">Nossa história</span>
+          <h2>Somos apaixonados por <span>animais</span></h2>
+          <p>
+            O SER Petshop nasceu do amor pelos animais e da vontade de oferecer um atendimento diferenciado, onde cada pet é tratado com respeito, carinho e profissionalismo. Mais do que um petshop, somos uma família que cuida da sua família.
+          </p>
+          <ul class="sobre-lista">
+            <li>
+              <i class="fas fa-check"></i>
+              Mais de 5 anos cuidando de pets
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              Profissionais certificados e apaixonados
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              Ambiente 100% seguro e higienizado
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              Atendimento personalizado para cada raça
+            </li>
+            <li>
+              <i class="fas fa-check"></i>
+              Produtos selecionados e de qualidade
+            </li>
+          </ul>
+          <a href="#contato" class="btn-primary">
+            <i class="fas fa-calendar-check"></i> Agende uma visita
+          </a>
         </div>
-        <div class="stat">
-          <span class="stat-num">5★</span>
-          <span class="stat-label">Avaliação média</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">10+</span>
-          <span class="stat-label">Serviços oferecidos</span>
+        <div class="sobre-stats-grid">
+          <div class="stat-box">
+            <span class="num">500+</span>
+            <span class="label">Pets atendidos</span>
+          </div>
+          <div class="stat-box">
+            <span class="num">5★</span>
+            <span class="label">Avaliação média</span>
+          </div>
+          <div class="stat-box">
+            <span class="num">10+</span>
+            <span class="label">Serviços oferecidos</span>
+          </div>
+          <div class="stat-box">
+            <span class="num">5 anos</span>
+            <span class="label">De experiência</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTATO -->
+  <!-- ===== CONTATO ===== -->
   <section class="section section-alt" id="contato">
-    <h2 class="section-title">Entre em Contato</h2>
-    <div class="contato-container">
-      <div class="contato-info">
-        <p><i class="fas fa-map-marker-alt"></i> Rua dos Animais, 123 — Seu Bairro</p>
-        <p><i class="fas fa-phone"></i> (11) 99999-0000</p>
-        <p><i class="fas fa-envelope"></i> contato@serpetshop.com.br</p>
-        <p><i class="fas fa-clock"></i> Seg–Sex: 8h–18h | Sáb: 8h–14h</p>
-        <div class="social-links">
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        </div>
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-eyebrow">Fale conosco</span>
+        <h2 class="section-title">Estamos aqui <span>para você</span></h2>
       </div>
-      <form class="contato-form" id="contato-form">
-        <input type="text" id="nome" placeholder="Seu nome" required />
-        <input type="email" id="email" placeholder="Seu e-mail" required />
-        <input type="text" id="assunto" placeholder="Assunto" />
-        <textarea id="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
-        <button type="submit" class="btn-primary">Enviar Mensagem</button>
-        <p class="form-feedback" id="form-feedback"></p>
-      </form>
+      <div class="contato-grid">
+
+        <div class="contato-info">
+          <h3>Venha nos visitar</h3>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="info-text">
+              <strong>Endereço</strong>
+              <span>Rua dos Animais, 123 — Seu Bairro, Sua Cidade</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
+            <div class="info-text">
+              <strong>Telefone / WhatsApp</strong>
+              <span>(11) 99999-0000</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div class="info-text">
+              <strong>E-mail</strong>
+              <span>contato@serpetshop.com.br</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-clock"></i></div>
+            <div class="info-text">
+              <strong>Horário de funcionamento</strong>
+              <span>Seg–Sex: 8h–18h &nbsp;|&nbsp; Sáb: 8h–12h e 14h–16h</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div class="contato-form-wrapper">
+          <h3>Envie sua mensagem</h3>
+          <form id="contato-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" placeholder="Seu nome" required />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="seu@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="assunto">Assunto</label>
+              <input type="text" id="assunto" placeholder="Ex: Agendamento de banho" />
+            </div>
+            <div class="form-group">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" rows="5" placeholder="Como podemos ajudar o seu pet?" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+              <i class="fas fa-paper-plane"></i> Enviar mensagem
+            </button>
+            <p class="form-feedback" id="form-feedback" role="alert"></p>
+          </form>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ===== FOOTER ===== -->
   <footer>
-    <p>&copy; 2026 SER Petshop. Todos os direitos reservados. Feito com <i class="fas fa-heart"></i> para os pets.</p>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:26px;height:26px;">
+            <ellipse cx="50" cy="68" rx="44" ry="10" fill="white"/>
+            <rect x="22" y="16" width="56" height="50" rx="4" fill="white"/>
+            <ellipse cx="50" cy="16" rx="28" ry="8" fill="white"/>
+            <rect x="22" y="52" width="56" height="8" rx="2" fill="rgba(255,255,255,0.25)"/>
+          </svg>
+        </div>
+        SER Petshop
+      </div>
+      <nav class="footer-links" aria-label="Links do rodapé">
+        <a href="#home">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+    <p class="footer-bottom">
+      &copy; 2026 SER Petshop. Todos os direitos reservados. Feito com <i class="fas fa-heart"></i> para os pets.
+    </p>
   </footer>
+
+  <!-- Botão voltar ao topo -->
+  <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <script src="js/main.js"></script>
 </body>

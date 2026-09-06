@@ -1,79 +1,107 @@
 // ===== MENU MOBILE =====
 const hamburger = document.getElementById('hamburger');
-const navLinks = document.querySelector('.nav-links');
+const navLinks  = document.getElementById('nav-links');
 
 hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+  const isOpen = navLinks.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen);
+  hamburger.querySelector('i').className = isOpen ? 'fas fa-times' : 'fas fa-bars';
 });
 
-// Fechar menu ao clicar em um link
+// Fechar menu ao clicar em link
 navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.querySelector('i').className = 'fas fa-bars';
   });
 });
 
 // ===== NAVBAR: destacar link ativo ao rolar =====
 const sections = document.querySelectorAll('section[id]');
-const links = document.querySelectorAll('.nav-links a');
+const links     = document.querySelectorAll('.nav-links a');
 
-window.addEventListener('scroll', () => {
+function setActiveLink() {
   let current = '';
   sections.forEach(section => {
-    const sectionTop = section.offsetTop - 100;
-    if (window.scrollY >= sectionTop) {
+    if (window.scrollY >= section.offsetTop - 120) {
       current = section.getAttribute('id');
     }
   });
-
   links.forEach(link => {
     link.style.color = '';
-    if (link.getAttribute('href') === `#${current}`) {
-      link.style.color = 'var(--primary)';
+    link.style.background = '';
+    const href = link.getAttribute('href');
+    if (href === `#${current}` && !link.classList.contains('nav-cta')) {
+      link.style.color = 'var(--green-dark)';
+      link.style.background = 'var(--green-pale)';
     }
   });
+}
+
+window.addEventListener('scroll', setActiveLink, { passive: true });
+
+// ===== SCROLL TO TOP =====
+const scrollTopBtn = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', () => {
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // ===== FORMULÁRIO DE CONTATO =====
-const form = document.getElementById('contato-form');
+const form     = document.getElementById('contato-form');
 const feedback = document.getElementById('form-feedback');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  feedback.className = 'form-feedback';
+  feedback.textContent = '';
 
-  const nome = document.getElementById('nome').value.trim();
-  const email = document.getElementById('email').value.trim();
+  const nome     = document.getElementById('nome').value.trim();
+  const email    = document.getElementById('email').value.trim();
   const mensagem = document.getElementById('mensagem').value.trim();
 
   if (!nome || !email || !mensagem) {
-    feedback.style.color = '#dc2626';
+    feedback.classList.add('error');
     feedback.textContent = 'Por favor, preencha todos os campos obrigatórios.';
     return;
   }
 
-  // Simula envio
-  feedback.style.color = '#16a34a';
-  feedback.textContent = `Obrigado, ${nome}! Sua mensagem foi enviada com sucesso.`;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    feedback.classList.add('error');
+    feedback.textContent = 'Por favor, insira um e-mail válido.';
+    return;
+  }
+
+  feedback.textContent = `✓ Obrigado, ${nome}! Entraremos em contato em breve.`;
   form.reset();
 
-  setTimeout(() => { feedback.textContent = ''; }, 5000);
+  setTimeout(() => { feedback.textContent = ''; }, 6000);
 });
 
 // ===== ANIMAÇÃO DE ENTRADA (Intersection Observer) =====
-const animatedElements = document.querySelectorAll('.card, .product-card, .stat');
+const animItems = document.querySelectorAll(
+  '.card, .product-card, .stat-box, .hero-card, .contato-form-wrapper, .sobre-text'
+);
 
-const observer = new IntersectionObserver((entries) => {
+const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = '1';
       entry.target.style.transform = 'translateY(0)';
+      io.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.12 });
 
-animatedElements.forEach(el => {
+animItems.forEach(el => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(30px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  observer.observe(el);
+  el.style.transform = 'translateY(28px)';
+  el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+  io.observe(el);
 });
