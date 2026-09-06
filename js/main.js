@@ -1,10 +1,23 @@
+// ===== LENIS — SMOOTH SCROLL =====
+const lenis = new Lenis({
+  duration: 1.3,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothTouch: false,
+});
+
+function lenisRaf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(lenisRaf);
+}
+requestAnimationFrame(lenisRaf);
+
 // ===== SCROLL SUAVE PARA LINKS INTERNOS =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const target = document.querySelector(this.getAttribute('href'));
     if (!target) return;
     e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    lenis.scrollTo(target, { offset: -70, duration: 1.4 });
   });
 });
 
@@ -26,14 +39,21 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
-// ===== NAVBAR: destacar link ativo =====
+// ===== SCROLL TO TOP =====
+const scrollTopBtn = document.getElementById('scrollTop');
+
+scrollTopBtn.addEventListener('click', () => {
+  lenis.scrollTo(0, { duration: 1.4 });
+});
+
+// ===== NAVBAR: link ativo + botão scroll-to-top via evento Lenis =====
 const sections = document.querySelectorAll('section[id]');
 const navItems  = document.querySelectorAll('.nav-links a:not(.nav-cta)');
 
-function updateActiveLink() {
+function updateActiveLink(scrollY) {
   let current = '';
   sections.forEach(section => {
-    if (window.scrollY >= section.offsetTop - 130) {
+    if (scrollY >= section.offsetTop - 130) {
       current = section.getAttribute('id');
     }
   });
@@ -46,23 +66,15 @@ function updateActiveLink() {
     }
   });
 }
-window.addEventListener('scroll', updateActiveLink, { passive: true });
 
-// ===== SCROLL TO TOP =====
-const scrollTopBtn = document.getElementById('scrollTop');
-window.addEventListener('scroll', () => {
-  scrollTopBtn.classList.toggle('visible', window.scrollY > 420);
-}, { passive: true });
-
-scrollTopBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+lenis.on('scroll', ({ scroll }) => {
+  updateActiveLink(scroll);
+  scrollTopBtn.classList.toggle('visible', scroll > 420);
 });
 
 // ===== REVEAL AO SCROLL (Intersection Observer) =====
-// Aguarda a DOM estar completamente pronta para não disparar cedo demais
 function initReveal() {
   const revealEls = document.querySelectorAll('.reveal');
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -70,15 +82,12 @@ function initReveal() {
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   revealEls.forEach(el => observer.observe(el));
 }
 
-// ===== FADE-IN INICIAL DA PÁGINA (page transition) =====
+// ===== FADE-IN INICIAL DA PÁGINA =====
 function initPageFade() {
   document.body.style.opacity = '0';
   document.body.style.transition = 'opacity 0.5s ease';
@@ -110,8 +119,7 @@ function initForm() {
       return;
     }
 
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!emailOk) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       feedback.classList.add('error');
       feedback.textContent = 'Por favor, insira um e-mail válido.';
       return;
@@ -131,5 +139,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initPageFade();
   initReveal();
   initForm();
-  updateActiveLink();
+  updateActiveLink(window.scrollY);
 });
