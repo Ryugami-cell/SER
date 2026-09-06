@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SER Petshop — Cuidando com amor</title>
-  <meta name="description" content="SER Petshop — Banho, tosa, consultas veterinárias e produtos para cães e gatos. Tudo que o seu melhor amigo merece." />
+  <meta name="description" content="SER Petshop — Banho, tosa, consultas veterinárias e produtos para cães e gatos." />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
@@ -13,19 +13,12 @@
   <!-- ===== NAVBAR ===== -->
   <header>
     <nav class="navbar">
-
-      <!-- LOGO: chapéu de barão SVG -->
       <a href="#home" class="logo">
         <div class="logo-icon">
-          <!-- Chapéu de Barão (Top Hat) SVG -->
           <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Aba do chapéu -->
             <ellipse cx="50" cy="68" rx="44" ry="10" fill="white"/>
-            <!-- Corpo do chapéu -->
             <rect x="22" y="16" width="56" height="50" rx="4" fill="white"/>
-            <!-- Topo do chapéu (arredondado) -->
             <ellipse cx="50" cy="16" rx="28" ry="8" fill="white"/>
-            <!-- Faixa decorativa -->
             <rect x="22" y="52" width="56" height="8" rx="2" fill="rgba(45,106,79,0.35)"/>
           </svg>
         </div>
@@ -35,6 +28,7 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="#home">Início</a></li>
         <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#galeria">Galeria</a></li>
         <li><a href="#produtos">Produtos</a></li>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#contato" class="nav-cta">Fale conosco</a></li>
@@ -50,13 +44,13 @@
   <section class="hero" id="home">
     <div class="hero-container">
 
-      <div class="hero-content">
+      <div class="hero-content fade-up">
         <span class="hero-badge">
           <i class="fas fa-paw"></i> Bem-vindo ao SER Petshop
         </span>
         <h1>
           Cuidando do seu pet<br/>
-          com <em>amor & estilo</em>
+          com <em>amor &amp; estilo</em>
         </h1>
         <p>
           Banho, tosa, consultas veterinárias e produtos selecionados para cães e gatos. Um lugar seguro e acolhedor para o seu melhor amigo.
@@ -71,24 +65,16 @@
         </div>
       </div>
 
-      <div class="hero-visual">
-        <div class="hero-card">
-          <div class="hero-card-icon">🐾</div>
-          <h3>Seu pet merece o melhor</h3>
-          <p>Profissionais certificados, ambiente seguro e muito carinho em cada atendimento.</p>
-          <div class="hero-card-stats">
-            <div class="hero-stat">
-              <span>500+</span>
-              <span>Pets atendidos</span>
-            </div>
-            <div class="hero-stat">
-              <span>5★</span>
-              <span>Avaliação</span>
-            </div>
-            <div class="hero-stat">
-              <span>5 anos</span>
-              <span>Experiência</span>
-            </div>
+      <div class="hero-visual fade-up fade-up--delay">
+        <div class="hero-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=520&q=80&auto=format&fit=crop"
+            alt="Cachorro feliz no petshop"
+            class="hero-photo"
+            loading="eager"
+          />
+          <div class="hero-badge-float">
+            <i class="fas fa-star"></i> 5.0 — Avaliação dos clientes
           </div>
         </div>
       </div>
@@ -99,39 +85,39 @@
   <!-- ===== SERVIÇOS ===== -->
   <section class="section" id="servicos">
     <div class="section-inner">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-eyebrow">O que oferecemos</span>
         <h2 class="section-title">Serviços feitos com <span>dedicação</span></h2>
         <p class="section-sub">Cada pet é único. Por isso, cada atendimento é personalizado com todo o cuidado que ele merece.</p>
       </div>
       <div class="cards-grid">
-        <div class="card">
-          <div class="card-icon">🛁</div>
-          <h3>Banho & Tosa</h3>
+        <div class="card reveal">
+          <div class="card-icon"><i class="fas fa-shower"></i></div>
+          <h3>Banho &amp; Tosa</h3>
           <p>Deixamos seu pet limpo, cheiroso e confortável com produtos dermatologicamente testados.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">🩺</div>
+        <div class="card reveal">
+          <div class="card-icon"><i class="fas fa-stethoscope"></i></div>
           <h3>Consulta Veterinária</h3>
           <p>Equipe veterinária especializada para cuidar da saúde e bem-estar do seu animal.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">🏡</div>
+        <div class="card reveal">
+          <div class="card-icon"><i class="fas fa-house-chimney"></i></div>
           <h3>Hotel para Pets</h3>
           <p>Hospedagem segura, acolhedora e supervisionada enquanto você viaja tranquilo.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">✂️</div>
+        <div class="card reveal">
+          <div class="card-icon"><i class="fas fa-scissors"></i></div>
           <h3>Estética Animal</h3>
           <p>Cortes personalizados, hidratação e cuidados estéticos para cada raça e pelagem.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">💉</div>
+        <div class="card reveal">
+          <div class="card-icon"><i class="fas fa-syringe"></i></div>
           <h3>Vacinação</h3>
           <p>Calendário vacinal completo com acompanhamento e lembretes para o seu pet.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">🦷</div>
+        <div class="card reveal">
+          <div class="card-icon"><i class="fas fa-tooth"></i></div>
           <h3>Higiene Dental</h3>
           <p>Limpeza dental profissional para prevenir doenças e garantir um hálito saudável.</p>
         </div>
@@ -139,17 +125,56 @@
     </div>
   </section>
 
-  <!-- ===== PRODUTOS ===== -->
-  <section class="section section-alt" id="produtos">
+  <!-- ===== GALERIA DE PETS ===== -->
+  <section class="section section-alt" id="galeria">
     <div class="section-inner">
-      <div class="section-header">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Nossos clientes</span>
+        <h2 class="section-title">Pets <span>felizes</span></h2>
+        <p class="section-sub">Cada visita é uma história de carinho. Conheça alguns dos nossos queridos clientes.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=500&q=80&auto=format&fit=crop" alt="Cachorro golden retriever" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-paw"></i></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500&q=80&auto=format&fit=crop" alt="Gato laranja fofo" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-paw"></i></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&q=80&auto=format&fit=crop" alt="Cachorro labrador" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-paw"></i></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=500&q=80&auto=format&fit=crop" alt="Cachorro border collie" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-paw"></i></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1518791841217-8f162f1912da?w=500&q=80&auto=format&fit=crop" alt="Gato branco fofo" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-paw"></i></div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=500&q=80&auto=format&fit=crop" alt="Cachorro sorridente" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-paw"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUTOS ===== -->
+  <section class="section" id="produtos">
+    <div class="section-inner">
+      <div class="section-header reveal">
         <span class="section-eyebrow">Loja</span>
         <h2 class="section-title">Produtos em <span>destaque</span></h2>
         <p class="section-sub">Selecionamos os melhores produtos para nutrição, conforto e saúde do seu pet.</p>
       </div>
       <div class="products-grid">
-        <div class="product-card">
-          <div class="product-thumb">🥩</div>
+        <div class="product-card reveal">
+          <div class="product-thumb">
+            <i class="fas fa-bowl-food"></i>
+          </div>
           <div class="product-body">
             <h3>Ração Premium</h3>
             <p>Formulada por veterinários nutricionistas para cães e gatos de todas as idades.</p>
@@ -157,28 +182,34 @@
             <a href="#contato" class="btn-secondary">Ver opções</a>
           </div>
         </div>
-        <div class="product-card">
-          <div class="product-thumb">🎀</div>
+        <div class="product-card reveal">
+          <div class="product-thumb">
+            <i class="fas fa-tag"></i>
+          </div>
           <div class="product-body">
-            <h3>Roupinhas & Acessórios</h3>
-            <p>Estilo, conforto e proteção para o seu pet em qualquer ocasião.</p>
+            <h3>Coleiras &amp; Acessórios</h3>
+            <p>Estilo, conforto e segurança para o seu pet em qualquer ocasião.</p>
             <span class="price">A partir de R$ 29,90</span>
             <a href="#contato" class="btn-secondary">Ver opções</a>
           </div>
         </div>
-        <div class="product-card">
-          <div class="product-thumb">💊</div>
+        <div class="product-card reveal">
+          <div class="product-thumb">
+            <i class="fas fa-pills"></i>
+          </div>
           <div class="product-body">
-            <h3>Medicamentos & Vitaminas</h3>
+            <h3>Medicamentos &amp; Vitaminas</h3>
             <p>Vermífugos, antipulgas, vitaminas e suplementos com orientação veterinária.</p>
             <span class="price">A partir de R$ 19,90</span>
             <a href="#contato" class="btn-secondary">Ver opções</a>
           </div>
         </div>
-        <div class="product-card">
-          <div class="product-thumb">🛏️</div>
+        <div class="product-card reveal">
+          <div class="product-thumb">
+            <i class="fas fa-bed"></i>
+          </div>
           <div class="product-body">
-            <h3>Caminhas & Casinhas</h3>
+            <h3>Caminhas &amp; Casinhas</h3>
             <p>Conforto e aconchego para o seu pet descansar com segurança.</p>
             <span class="price">A partir de R$ 89,90</span>
             <a href="#contato" class="btn-secondary">Ver opções</a>
@@ -189,57 +220,38 @@
   </section>
 
   <!-- ===== SOBRE ===== -->
-  <section class="section" id="sobre">
+  <section class="section section-alt" id="sobre">
     <div class="section-inner">
       <div class="sobre-grid">
-        <div class="sobre-text">
+        <div class="sobre-text reveal">
           <span class="section-eyebrow">Nossa história</span>
           <h2>Somos apaixonados por <span>animais</span></h2>
           <p>
             O SER Petshop nasceu do amor pelos animais e da vontade de oferecer um atendimento diferenciado, onde cada pet é tratado com respeito, carinho e profissionalismo. Mais do que um petshop, somos uma família que cuida da sua família.
           </p>
           <ul class="sobre-lista">
-            <li>
-              <i class="fas fa-check"></i>
-              Mais de 5 anos cuidando de pets
-            </li>
-            <li>
-              <i class="fas fa-check"></i>
-              Profissionais certificados e apaixonados
-            </li>
-            <li>
-              <i class="fas fa-check"></i>
-              Ambiente 100% seguro e higienizado
-            </li>
-            <li>
-              <i class="fas fa-check"></i>
-              Atendimento personalizado para cada raça
-            </li>
-            <li>
-              <i class="fas fa-check"></i>
-              Produtos selecionados e de qualidade
-            </li>
+            <li><i class="fas fa-check"></i> Mais de 5 anos cuidando de pets</li>
+            <li><i class="fas fa-check"></i> Profissionais certificados e apaixonados</li>
+            <li><i class="fas fa-check"></i> Ambiente 100% seguro e higienizado</li>
+            <li><i class="fas fa-check"></i> Atendimento personalizado para cada raça</li>
+            <li><i class="fas fa-check"></i> Produtos selecionados e de qualidade</li>
           </ul>
           <a href="#contato" class="btn-primary">
             <i class="fas fa-calendar-check"></i> Agende uma visita
           </a>
         </div>
-        <div class="sobre-stats-grid">
-          <div class="stat-box">
-            <span class="num">500+</span>
-            <span class="label">Pets atendidos</span>
+
+        <div class="sobre-right">
+          <div class="sobre-foto-grid reveal">
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&q=80&auto=format&fit=crop" alt="Dois cachorros felizes" class="sobre-foto sobre-foto--lg" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400&q=80&auto=format&fit=crop" alt="Gato curioso" class="sobre-foto" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&q=80&auto=format&fit=crop" alt="Cachorro feliz" class="sobre-foto" loading="lazy" />
           </div>
-          <div class="stat-box">
-            <span class="num">5★</span>
-            <span class="label">Avaliação média</span>
-          </div>
-          <div class="stat-box">
-            <span class="num">10+</span>
-            <span class="label">Serviços oferecidos</span>
-          </div>
-          <div class="stat-box">
-            <span class="num">5 anos</span>
-            <span class="label">De experiência</span>
+          <div class="sobre-stats-grid">
+            <div class="stat-box reveal"><span class="num">500+</span><span class="label">Pets atendidos</span></div>
+            <div class="stat-box reveal"><span class="num">5<i class="fas fa-star" style="font-size:1.1rem"></i></span><span class="label">Avaliação média</span></div>
+            <div class="stat-box reveal"><span class="num">10+</span><span class="label">Serviços</span></div>
+            <div class="stat-box reveal"><span class="num">5 anos</span><span class="label">De experiência</span></div>
           </div>
         </div>
       </div>
@@ -247,15 +259,15 @@
   </section>
 
   <!-- ===== CONTATO ===== -->
-  <section class="section section-alt" id="contato">
+  <section class="section" id="contato">
     <div class="section-inner">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-eyebrow">Fale conosco</span>
         <h2 class="section-title">Estamos aqui <span>para você</span></h2>
       </div>
       <div class="contato-grid">
 
-        <div class="contato-info">
+        <div class="contato-info reveal">
           <h3>Venha nos visitar</h3>
           <div class="info-item">
             <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
@@ -293,7 +305,7 @@
           </div>
         </div>
 
-        <div class="contato-form-wrapper">
+        <div class="contato-form-wrapper reveal">
           <h3>Envie sua mensagem</h3>
           <form id="contato-form" novalidate>
             <div class="form-row">
@@ -314,7 +326,7 @@
               <label for="mensagem">Mensagem</label>
               <textarea id="mensagem" rows="5" placeholder="Como podemos ajudar o seu pet?" required></textarea>
             </div>
-            <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
               <i class="fas fa-paper-plane"></i> Enviar mensagem
             </button>
             <p class="form-feedback" id="form-feedback" role="alert"></p>
@@ -342,6 +354,7 @@
       <nav class="footer-links" aria-label="Links do rodapé">
         <a href="#home">Início</a>
         <a href="#servicos">Serviços</a>
+        <a href="#galeria">Galeria</a>
         <a href="#produtos">Produtos</a>
         <a href="#sobre">Sobre</a>
         <a href="#contato">Contato</a>
@@ -352,7 +365,6 @@
     </p>
   </footer>
 
-  <!-- Botão voltar ao topo -->
   <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
     <i class="fas fa-arrow-up"></i>
   </button>
