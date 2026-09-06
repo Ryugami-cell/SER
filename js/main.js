@@ -1,23 +1,42 @@
-// ===== LENIS — SMOOTH SCROLL =====
-const lenis = new Lenis({
-  duration: 1.3,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smoothTouch: false,
-});
+// ===== SMOOTH SCROLL — implementação nativa sem dependências =====
+// Funciona com file:// e http:// igualmente
+function smoothScrollTo(targetY, duration) {
+  const startY   = window.scrollY;
+  const distance = targetY - startY;
+  const startTime = performance.now();
 
-function lenisRaf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(lenisRaf);
+  function easeInOutQuart(t) {
+    return t < 0.5
+      ? 8 * t * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 4) / 2;
+  }
+
+  function step(currentTime) {
+    const elapsed  = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease     = easeInOutQuart(progress);
+
+    window.scrollTo(0, startY + distance * ease);
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
 }
-requestAnimationFrame(lenisRaf);
 
 // ===== SCROLL SUAVE PARA LINKS INTERNOS =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    const href   = this.getAttribute('href');
+    const target = document.querySelector(href);
     if (!target) return;
     e.preventDefault();
-    lenis.scrollTo(target, { offset: -70, duration: 1.4 });
+
+    const navHeight = document.querySelector('header').offsetHeight;
+    const targetY   = target.getBoundingClientRect().top + window.scrollY - navHeight;
+    smoothScrollTo(targetY, 900);
   });
 });
 
@@ -43,14 +62,20 @@ navLinks.querySelectorAll('a').forEach(link => {
 const scrollTopBtn = document.getElementById('scrollTop');
 
 scrollTopBtn.addEventListener('click', () => {
-  lenis.scrollTo(0, { duration: 1.4 });
+  smoothScrollTo(0, 900);
 });
 
-// ===== NAVBAR: link ativo + botão scroll-to-top via evento Lenis =====
+// ===== NAVBAR: link ativo + botão scroll-to-top =====
 const sections = document.querySelectorAll('section[id]');
 const navItems  = document.querySelectorAll('.nav-links a:not(.nav-cta)');
 
-function updateActiveLink(scrollY) {
+function updateUI() {
+  const scrollY = window.scrollY;
+
+  // Botão scroll-to-top
+  scrollTopBtn.classList.toggle('visible', scrollY > 420);
+
+  // Link ativo no menu
   let current = '';
   sections.forEach(section => {
     if (scrollY >= section.offsetTop - 130) {
@@ -58,24 +83,21 @@ function updateActiveLink(scrollY) {
     }
   });
   navItems.forEach(link => {
-    link.style.color = '';
+    link.style.color      = '';
     link.style.background = '';
     if (link.getAttribute('href') === `#${current}`) {
-      link.style.color = 'var(--green-dark)';
+      link.style.color      = 'var(--green-dark)';
       link.style.background = 'var(--green-pale)';
     }
   });
 }
 
-lenis.on('scroll', ({ scroll }) => {
-  updateActiveLink(scroll);
-  scrollTopBtn.classList.toggle('visible', scroll > 420);
-});
+window.addEventListener('scroll', updateUI, { passive: true });
 
 // ===== REVEAL AO SCROLL (Intersection Observer) =====
 function initReveal() {
   const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
+  const observer  = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
@@ -89,7 +111,7 @@ function initReveal() {
 
 // ===== FADE-IN INICIAL DA PÁGINA =====
 function initPageFade() {
-  document.body.style.opacity = '0';
+  document.body.style.opacity   = '0';
   document.body.style.transition = 'opacity 0.5s ease';
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
@@ -106,7 +128,7 @@ function initForm() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    feedback.className = 'form-feedback';
+    feedback.className   = 'form-feedback';
     feedback.textContent = '';
 
     const nome     = document.getElementById('nome').value.trim();
@@ -129,7 +151,10 @@ function initForm() {
     form.reset();
     setTimeout(() => {
       feedback.style.opacity = '0';
-      setTimeout(() => { feedback.textContent = ''; feedback.style.opacity = '1'; }, 400);
+      setTimeout(() => {
+        feedback.textContent   = '';
+        feedback.style.opacity = '1';
+      }, 400);
     }, 5000);
   });
 }
@@ -139,5 +164,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initPageFade();
   initReveal();
   initForm();
-  updateActiveLink(window.scrollY);
+  updateUI();
 });
