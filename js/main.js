@@ -23,7 +23,7 @@
 
   window.addEventListener('wheel', (e) => {
     e.preventDefault();
-    const delta = e.deltaMode === 1 ? e.deltaY * 32 : e.deltaY;
+    const delta = e.deltaMode === 1 ? e.deltaY * 96 : e.deltaY * 3;
     const max   = document.documentElement.scrollHeight - window.innerHeight;
     targetY     = Math.max(0, Math.min(targetY + delta, max));
 
